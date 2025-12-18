@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stranger Things 5 | Final Season</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="fonts.googleapis.com" rel="stylesheet">
+
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Comfortaa:wght@300..700&family=Dela+Gothic+One&family=Geist:wght@100..900&family=Momo+Trust+Display&family=Poiret+One&display=swap');
+
+
+    :root {
+      --main-black: #050505;
+      --deep-red: #9e0a13;
+      --stranger-red: #e1121f;
+      --glow-red: rgba(225, 18, 31, 0.7);
+      --glass: rgba(10, 10, 10, 0.9);
+    }
+
+    * { box-sizing: border-box;
+    font-family: "Dela Gothic One"; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at center, #1a0808 0%, #050505 100%);
+      color: #fff;
+      font-family: 'Dela Gothic One', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* АНИМАЦИЯ МИГАНИЯ (FLICKER) */
+    @keyframes flicker {
+      0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow: 0 0 10px var(--glow-red), 0 0 30px var(--glow-red), 0 0 60px var(--stranger-red);
+        opacity: 1;
+      }
+      20%, 24%, 55% {
+        text-shadow: none;
+        opacity: 0.3;
+      }
+    }
+
+    h1 {
+      font-family: 'Dela Gothic One', cursive;
+      font-size: clamp(2.5rem, 10vw, 6rem);
+      text-align: center;
+      color: var(--stranger-red);
+      margin: 0;
+      letter-spacing: 4px;
+      animation: flicker 4s infinite;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 1rem;
+      letter-spacing: 8px;
+      color: #555;
+      margin-top: 10px;
+      text-transform: uppercase;
+    }
+
+    .content-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 60px;
+      align-items: center;
+      margin: 80px 0;
+    }
+
+    /* ПЛАВАЮЩИЕ КАРТИНКИ */
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(1deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    .image-side img {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid #300;
+      box-shadow: 0 0 40px rgba(0,0,0,0.8);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .glass-card {
+      background: var(--glass);
+      padding: 45px;
+      border-radius: 15px;
+      border-left: 6px solid var(--stranger-red);
+      box-shadow: 20px 20px 60px rgba(0,0,0,0.7);
+      flex: 1;
+      min-width: 350px;
+    }
+
+    h3 {
+      font-family: 'Dela Gothic One', cursive;
+      color: var(--stranger-red);
+      font-size: 1.8rem;
+      margin-top: 0;
+    }
+
+    /* ЧЕРНО-КРАСНАЯ КНОПКА */
+    .cta-button {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 18px 40px;
+      background: var(--deep-red);
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Dela Gothic One', cursive;
+      font-size: 1rem;
+      border-radius: 4px;
+      transition: 0.4s;
+      border: 2px solid transparent;
+      text-transform: uppercase;
+    }
+
+    .cta-button:hover {
+      background: #000;
+      color: var(--stranger-red);
+      border-color: var(--stranger-red);
+      box-shadow: 0 0 25px var(--glow-red);
+      transform: scale(1.05);
+    }
+
+    .genre-box {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 5px;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      font-family: 'Dela Gothic One', cursive;
+      font-size: 0.8rem;
+      color: #888;
+      border-radius: 4px;
+      transition: 0.3s;
+    }
+
+    .genre-box:hover {
+      color: var(--stranger-red);
+      border-color: var(--stranger-red);
+    }
+
+    footer {
+      text-align: center;
+      padding: 100px 0 40px;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      color: #333;
+    }
+
+        @media (max-width: 768px) {
+      .content-grid { 
+        flex-direction: column !important; /* Форсируем колонку для всех сеток */
+        text-align: center; 
+        gap: 30px;
+      }
+      .glass-card { border-left: none; border-top: 6px solid var(--stranger-red); border-right: none !important; }
+      .image-side { 
+        order: -1; /* Картинка всегда будет сверху текста на мобилке */
+        width: 100%;
+      }
+    }
+
+
+
+    .gh-footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 0;
+      background: linear-gradient(to bottom, transparent, #0a0000);
+      margin-top: 60px;
+    }
+
+    .gh-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #444; /* Тусклый цвет в покое */
+      text-decoration: none;
+      font-family: 'Dela Gothic One', cursive;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 12px 24px;
+      border: 1px solid transparent;
+    }
+
+    .gh-link svg {
+      fill: currentColor;
+      transition: transform 0.6s ease;
+    }
+
+    .gh-link:hover {
+      color: #e1121f; /* Красный при наведении */
+      text-shadow: 0 0 15px rgba(225, 18, 31, 0.8);
+      transform: translateY(-5px);
+    }
+
+    .gh-link:hover svg {
+      transform: rotate(360deg); /* Крутая анимация иконки */
+    }
+
+    .gh-divider {
+      width: 50px;
+      height: 2px;
+      background: #e1121f;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px #e1121f;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Stranger Things 5</h1>
+      <div class="subtitle">The Final Fight • 2025</div>
+    </header>
+
+    <div class="content-grid">
+      <div class="text-side glass-card">
+        <h3>ИЗНАНКА БЛИЗКО</h3>
+        <p>Тьма больше не прячется в тени — она стала самой тенью. Пятый сезон станет точкой невозврата, где тихий пригород превратится в поле боя за само существование человечества. Векна ждет, и его шепот разносится по обе стороны портала. Сможет ли дружба выстоять там, где ломается само пространство и время? Конец близок, и он будет громким</p>
+        <a href="https://youtu.be/iKZyYdwS3Wg?si=ufgjhHx3pVrq7cMZ" class="cta-button">Смотреть Тизер</a>
+      </div>
+      <div class="image-side" style="flex: 1.2;">
+        <img src="https://external-preview.redd.it/stranger-things-5-retro-trailer-v0-jPhpAb1Jvmsr9RYFl4emEyjuxG25N9Xi45HWPSvVBo8.jpeg?format=pjpg&auto=webp&s=2235d77ace60fdcc5e1a6331f99537b049865319" alt="ST5">
+      </div>
+    </div>
+
+    <div class="content-grid" style="flex-direction: row-reverse;">
+      <div class="text-side glass-card" style="border-left: none; border-right: 6px solid var(--stranger-red);">
+        <h3>МОИ ЛЮБИМЫЕ ЖАНРЫ</h3>
+        <p>Я ценю в кино атмосферу и напряжение. Эти жанры лучше всего передают дух "Очень странных дел":</p>
+        <div style="margin-top: 20px;">
+          <span class="genre-box">ФЭНТЕЗИ</span>
+          <span class="genre-box">ТРИЛЛЕРЫ</span>
+          <span class="genre-box">УЖАСЫ</span>
+        </div>
+      </div>
+      <div class="image-side" style="flex: 0.8;">
+        <img src="https://images.techeblog.com/wp-content/uploads/2025/06/01132919/netflix-stranger-things-5-release-date-1.jpg" alt="Vibe">
+      </div>
+    </div>
+
+    <footer>
+      BY BUSYAAA_1 | ST5 FAN PAGE | 2025
+    </footer>
+  </div>
+  <div class="gh-footer">
+    <div class="gh-divider"></div>
+    <a href="https://github.com/busyaaa1/" target="_blank" class="gh-link">
+      <svg height="24" width="24" viewBox="0 0 16 16">
+        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+      </svg>
+      DEVELOPER GITHUB
+    </a>
+  </div>
+
+</body>
+</html>
