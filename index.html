@@ -10,229 +10,209 @@
   <link href="fonts.googleapis.com" rel="stylesheet">
 
  <style>
-  /* Импорт шрифтов */
   @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Inter:wght@300;400;700&display=swap');
 
   :root {
     --main-black: #050505;
     --deep-red: #9e0a13;
     --stranger-red: #e1121f;
-    --glow-red: rgba(225, 18, 31, 0.5);
-    /* Эффект Remix: полупрозрачный темный + сильный блюр */
-    --glass: rgba(10, 10, 10, 0.75);
-    --glass-border: rgba(255, 255, 255, 0.05);
+    --glow-red: rgba(225, 18, 31, 0.7);
+    --glass: rgba(10, 10, 10, 0.9);
   }
 
   * { 
     box-sizing: border-box; 
-    transition: all 0.3s ease; /* Плавность для всего */
-  }
-
-  html {
-    scroll-behavior: smooth;
   }
 
   body {
     margin: 0;
     padding: 0;
-    /* Глубокий радиальный фон с красным отливом в центре */
-    background: radial-gradient(circle at center, #1a0505 0%, #020202 100%);
-    color: #eee;
-    font-family: 'Inter', sans-serif; /* Основной текст — современный Inter */
+    background: radial-gradient(circle at center, #1a0808 0%, #050505 100%);
+    color: #fff;
+    font-family: 'Dela Gothic One', sans-serif; /* Возвращаем основной шрифт везде */
     overflow-x: hidden;
     min-height: 100vh;
   }
 
-  /* ФОНОВОЕ СВЕЧЕНИЕ (как на remix.run) */
-  body::before {
-    content: "";
-    position: fixed;
-    top: 20%;
-    left: 50%;
-    width: 60vw;
-    height: 60vh;
-    background: radial-gradient(circle, rgba(225, 18, 31, 0.1) 0%, transparent 70%);
-    transform: translate(-50%, -50%);
-    z-index: -1;
-    pointer-events: none;
-  }
-
   .container {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 60px 20px;
+    padding: 40px 20px;
   }
 
-  /* АНИМАЦИЯ МИГАНИЯ ДЛЯ ЗАГОЛОВКА */
+  /* АНИМАЦИЯ МИГАНИЯ */
   @keyframes flicker {
     0%, 18%, 22%, 25%, 53%, 57%, 100% {
-      text-shadow: 0 0 10px var(--glow-red), 0 0 40px var(--stranger-red);
+      text-shadow: 0 0 10px var(--glow-red), 0 0 30px var(--glow-red), 0 0 60px var(--stranger-red);
       opacity: 1;
     }
     20%, 24%, 55% {
       text-shadow: none;
-      opacity: 0.5;
+      opacity: 0.3;
     }
   }
 
   h1 {
-    font-family: 'Dela Gothic One', cursive;
-    font-size: clamp(2.5rem, 12vw, 6.5rem);
+    font-size: clamp(2.5rem, 10vw, 6rem);
     text-align: center;
     color: var(--stranger-red);
     margin: 0;
-    letter-spacing: -2px; /* Чуть плотнее для стиля */
-    animation: flicker 5s infinite;
+    letter-spacing: 4px;
+    animation: flicker 4s infinite;
     text-transform: uppercase;
   }
 
   .subtitle {
     text-align: center;
-    font-size: 0.9rem;
-    letter-spacing: 10px;
-    color: #888;
-    margin-top: 15px;
+    font-size: 1rem;
+    letter-spacing: 8px;
+    color: #555;
+    margin-top: 10px;
     text-transform: uppercase;
-    font-weight: 300;
   }
 
   .content-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 40px;
+    gap: 60px;
     align-items: center;
-    margin: 100px 0;
+    margin: 80px 0;
   }
 
-  /* ПЛАВАЮЩИЕ КАРТИНКИ */
+  /* ТВОИ ПЛАВАЮЩИЕ КАРТИНКИ (ВОЗВРАЩЕНО) */
   @keyframes float {
-    0%, 100% { transform: translateY(0px) scale(1); }
-    50% { transform: translateY(-15px) scale(1.02); }
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(1deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
   }
 
   .image-side img {
     width: 100%;
-    border-radius: 20px;
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    animation: float 6s ease-in-out infinite;
+    border-radius: 12px;
+    border: 1px solid #300;
+    box-shadow: 0 0 40px rgba(0,0,0,0.8);
+    animation: float 6s ease-in-out infinite; /* Твоя плавная анимация */
   }
 
-  /* КАРТОЧКА В СТИЛЕ МАТОВОГО СТЕКЛА */
+  /* УЛУЧШЕННАЯ КАРТОЧКА (С ТВОИМ СТИЛЕМ) */
   .glass-card {
     background: var(--glass);
-    backdrop-filter: blur(20px); /* Матовое стекло */
-    -webkit-backdrop-filter: blur(20px);
-    padding: 40px;
-    border-radius: 24px;
-    border: 1px solid var(--glass-border);
-    border-left: 4px solid var(--stranger-red);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(15px); /* Оставляем эффект стекла */
+    -webkit-backdrop-filter: blur(15px);
+    padding: 45px;
+    border-radius: 15px;
+    border-left: 6px solid var(--stranger-red);
+    box-shadow: 20px 20px 60px rgba(0,0,0,0.7);
     flex: 1;
-    min-width: 320px;
+    min-width: 350px;
+    transition: 0.3s;
   }
 
   .glass-card:hover {
-    transform: translateY(-10px);
-    border-color: rgba(225, 18, 31, 0.4);
-    box-shadow: 0 30px 60px -12px rgba(225, 18, 31, 0.2);
+    transform: scale(1.02);
   }
 
   h3 {
-    font-family: 'Dela Gothic One', cursive;
-    color: #fff;
+    color: var(--stranger-red);
     font-size: 1.8rem;
     margin-top: 0;
-    letter-spacing: 1px;
   }
 
   p {
-    line-height: 1.7;
+    font-family: 'Inter', sans-serif; /* Для текста оставим читабельный Inter */
+    line-height: 1.6;
     color: #ccc;
-    font-size: 1.05rem;
   }
 
-  /* КНОПКА С ГРАДИЕНТОМ */
   .cta-button {
     display: inline-block;
     margin-top: 25px;
-    padding: 16px 35px;
-    background: linear-gradient(135deg, var(--stranger-red) 0%, #800a10 100%);
+    padding: 18px 40px;
+    background: var(--deep-red);
     color: #fff;
     text-decoration: none;
-    font-family: 'Dela Gothic One', cursive;
-    font-size: 0.9rem;
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(225, 18, 31, 0.3);
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: 0.4s;
+    border: 2px solid transparent;
     text-transform: uppercase;
   }
 
   .cta-button:hover {
-    transform: scale(1.05) translateY(-2px);
-    box-shadow: 0 15px 30px rgba(225, 18, 31, 0.5);
-    filter: brightness(1.2);
+    background: #000;
+    color: var(--stranger-red);
+    border-color: var(--stranger-red);
+    box-shadow: 0 0 25px var(--glow-red);
+    transform: scale(1.05);
   }
 
-  /* ЖАНРЫ */
   .genre-box {
     display: inline-block;
-    padding: 8px 16px;
+    padding: 10px 20px;
     margin: 5px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--glass-border);
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    font-size: 0.75rem;
-    color: #666;
-    border-radius: 8px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    font-size: 0.8rem;
+    color: #888;
+    border-radius: 4px;
+    transition: 0.3s;
   }
 
   .genre-box:hover {
-    background: rgba(225, 18, 31, 0.1);
     color: var(--stranger-red);
     border-color: var(--stranger-red);
   }
 
-  /* GITHUB FOOTER СТИЛЬ */
+  /* ГИТХАБ ФУТЕР (ВОЗВРАЩЕНО ПОЛНОСТЬЮ) */
   .gh-footer {
-    padding: 80px 0 40px;
-    text-align: center;
-  }
-
-  .gh-divider {
-    width: 60px;
-    height: 3px;
-    background: var(--stranger-red);
-    margin: 0 auto 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px var(--stranger-red);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+    background: linear-gradient(to bottom, transparent, #0a0000);
+    margin-top: 60px;
   }
 
   .gh-link {
-    color: #555;
-    text-decoration: none;
-    font-family: 'Dela Gothic One', sans-serif;
-    font-size: 0.8rem;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
+    gap: 12px;
+    color: #444;
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 12px 24px;
+  }
+
+  .gh-link svg {
+    fill: currentColor;
+    transition: transform 0.6s ease; /* Скорость вращения */
   }
 
   .gh-link:hover {
-    color: var(--stranger-red);
-    text-shadow: 0 0 10px var(--glow-red);
+    color: #e1121f;
+    text-shadow: 0 0 15px rgba(225, 18, 31, 0.8);
+    transform: translateY(-5px);
   }
 
-  /* МОБИЛЬНАЯ АДАПТАЦИЯ */
+  .gh-link:hover svg {
+    transform: rotate(360deg); /* Та самая крутилка */
+  }
+
+  .gh-divider {
+    width: 50px;
+    height: 2px;
+    background: #e1121f;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px #e1121f;
+  }
+
   @media (max-width: 768px) {
-    .content-grid { 
-      flex-direction: column !important;
-      margin: 50px 0;
-    }
-    .image-side { order: -1; }
-    .glass-card { padding: 30px; }
-    h1 { font-size: 3.5rem; }
+    .content-grid { flex-direction: column !important; text-align: center; gap: 30px; }
+    .image-side { order: -1; width: 100%; }
+    .glass-card { border-left: none; border-top: 6px solid var(--stranger-red); }
   }
 </style>
 </head>
@@ -286,5 +266,6 @@
 
 </body>
 </html>
+
 
 
